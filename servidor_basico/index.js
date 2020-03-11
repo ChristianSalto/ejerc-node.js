@@ -7,7 +7,6 @@ const chance = new Chance();
 // definir servidor 
 const server = http.createServer(function (request, response) {
     response.writeHead(200, { 'Content-type': 'text/html' });
-
     response.end('Wake up, ' + '<b>' + chance.name() + '</b>...');
 })
 
