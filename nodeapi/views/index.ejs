@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+</head>
+
+<body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-  </body>
+
+    <h1>Valor</h1>
+    <p>El valor es <%= valor + 55 %></p>
+    <p>Otro valor es <%- otroValor %></p>
+
+    <h1>Condiciones</h1>
+
+    <% if(condicion.estado) { %>
+    <p><%=condicion.segundo%> es par</p>
+    <% } else { %>
+    <p><%=condicion.segundo%> es impar</p>
+    <% } %>
+
+    <h1>Iterar</h1>
+
+    <% users.forEach(user => { %>
+        <p><%= user.name + ' ' + user.age %></p>
+   <% }); %>
+
+   <%= myFuncion(10); %> 
+
+</body>
+
 </html>

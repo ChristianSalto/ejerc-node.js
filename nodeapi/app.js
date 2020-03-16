@@ -16,6 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.locals.title = 'Nodeapi';
+
 app.use((req, res, next) => {
   // Una de dos:
   // - responder
@@ -40,6 +42,11 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+  if (err.array) { // error de validacion
+    err.status = 422;
+    const errInfo = err.array({ onlyFirstError: true })[0];
+    err.message = `El parametro ${errInfo.param} ${errInfo.msg}`;
+  }
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
