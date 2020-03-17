@@ -8,7 +8,10 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');// Definimos un nuevo motor de vistas 
+app.engine('html', require('ejs').__express); // En esta linea de codigo estamos diciendo a express 
+                                              // como responder y que rederizador debe utilizar
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -16,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.locals.title = 'Nodeapi';
+app.locals.title = 'Nodeapi'; // <-- Creo variable de manera local
 
 app.use((req, res, next) => {
   // Una de dos:
