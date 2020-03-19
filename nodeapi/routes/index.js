@@ -4,6 +4,9 @@ const { query, validationResult } = require('express-validator');
 
 
 
+
+
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
     // res.locals.title = 'Express';
@@ -24,7 +27,7 @@ router.get('/', function (req, res, next) {
     ];
 
     // Pasamos funcion de prueba para la vista
-    res.locals.myFuncion = (valor) => {  
+    res.locals.myFuncion = (valor) => {
         return valor * 10;
     }
 
